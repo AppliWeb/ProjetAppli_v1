@@ -1,0 +1,73 @@
+﻿@font-face {
+    font-family: 'deliusregular';
+    src: url('fonts/delius-regular-webfont.woff2') format('woff2'),
+         url('fonts/delius-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    margin:0px;
+    padding:0px;
+    font-size:12pt;
+}
+
+#page{
+    width:1280px;
+    margin:0px auto;
+}
+
+header{
+    margin-top:5px;
+}
+
+#logo{
+    float:left;
+}
+
+#optinMonster{
+    margin-right: 500px !important;
+    padding-right: 150px !important;
+}
+
+#titre{
+    margin-left:700px;    
+    margin-top:15px;
+    font-family:deliusregular,serif;
+    font-size:2.5em;
+    }
+
+#main{
+    font-family:'deliusregular',serif;
+    min-height:600px;
+    max-height:760px;
+    width:90%;
+    overflow:auto; /*barre de défilement si le contenu dépasse max-height*/
+}
+
+/************************* Formulaire de connexion ***********************/
+#login{
+    margin-top:150px;
+}
+#lienMdpOublie {
+    font-family: inherit;
+    font-style: italic;
+    font-weight: bold;
+}
+#mdpInvalide{
+    font-family:inherit;
+    font-size:0.8em;
+    color:red;
+    font-weight:bold;
+    margin-left:190px;
+}
+#mdpOublie {
+    font-family:inherit;
+    color: red;
+    font-weight: bold;
+    margin-left: 190px;
+    font-weight:bold;
+}
+.form-group {
+    margin-top:20px;
+}

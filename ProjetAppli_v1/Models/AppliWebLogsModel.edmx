@@ -1,0 +1,618 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="appliWebLogsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="anoCorbeille">
+          <Key>
+            <PropertyRef Name="fkIdentifiantAno" />
+            <PropertyRef Name="fkIdentifiantCorbeille" />
+          </Key>
+          <Property Name="fkIdentifiantAno" Type="int" Nullable="false" />
+          <Property Name="fkIdentifiantCorbeille" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="anomalie">
+          <Key>
+            <PropertyRef Name="identifiant" />
+          </Key>
+          <Property Name="identifiant" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fkIdentifiantLog" Type="int" Nullable="false" />
+          <Property Name="dateCreation" Type="date" Nullable="false" />
+          <Property Name="messageErreur" Type="varchar" MaxLength="50" />
+          <Property Name="severite" Type="varchar" MaxLength="20" />
+          <Property Name="datePriseEnCharge" Type="date" />
+          <Property Name="dateTraitement" Type="date" />
+          <Property Name="statut" Type="varchar" MaxLength="50" />
+          <Property Name="type" Type="varchar" MaxLength="50" />
+          <Property Name="phraseExclue" Type="nvarchar(max)" />
+          <Property Name="detailAnomalie" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="batch">
+          <Key>
+            <PropertyRef Name="libelle" />
+          </Key>
+          <Property Name="libelle" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="corbeille">
+          <Key>
+            <PropertyRef Name="identifiant" />
+          </Key>
+          <Property Name="identifiant" Type="int" Nullable="false" />
+          <Property Name="taille" Type="int" />
+        </EntityType>
+        <EntityType Name="domaine">
+          <Key>
+            <PropertyRef Name="identifiant" />
+          </Key>
+          <Property Name="identifiant" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="libelle" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="log">
+          <Key>
+            <PropertyRef Name="identifiant" />
+          </Key>
+          <Property Name="identifiant" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="domaine" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="titre" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="numeroEtape" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="pole" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="horodatage" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="dateCreation" Type="date" Nullable="false" />
+          <Property Name="nomServeur" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="adresseServeur" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="messageErreur">
+          <Key>
+            <PropertyRef Name="messageErreurAno" />
+          </Key>
+          <Property Name="messageErreurAno" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="pole">
+          <Key>
+            <PropertyRef Name="identifiant" />
+          </Key>
+          <Property Name="identifiant" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="libelle" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="serveur">
+          <Key>
+            <PropertyRef Name="libelle" />
+          </Key>
+          <Property Name="libelle" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="chemin" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="severite">
+          <Key>
+            <PropertyRef Name="libelle" />
+          </Key>
+          <Property Name="libelle" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="statut">
+          <Key>
+            <PropertyRef Name="libelle" />
+          </Key>
+          <Property Name="libelle" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="type">
+          <Key>
+            <PropertyRef Name="libelle" />
+          </Key>
+          <Property Name="libelle" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="utilisateur">
+          <Key>
+            <PropertyRef Name="identifiant" />
+          </Key>
+          <Property Name="identifiant" Type="int" Nullable="false" />
+          <Property Name="role" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="nom" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="prenom" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="debutValidite" Type="date" Nullable="false" />
+          <Property Name="domaines" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="etat" Type="int" Nullable="false" />
+          <Property Name="motDePasse" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="finValidite" Type="date" Nullable="false" />
+        </EntityType>
+        <!--Erreurs détectées durant la génération :
+avertissement 6002: La table/vue 'appliWebLogs.dbo.corbeillePersonnelle' n'a pas de clé primaire définie. La clé a été déduite et la définition a été créée en tant que table/vue en lecture seule.-->
+        <EntityType Name="corbeillePersonnelle">
+          <Key>
+            <PropertyRef Name="identifiant" />
+            <PropertyRef Name="fkIdentifiantLog" />
+            <PropertyRef Name="dateCreation" />
+            <PropertyRef Name="nom" />
+            <PropertyRef Name="titre" />
+            <PropertyRef Name="numeroEtape" />
+          </Key>
+          <Property Name="identifiant" Type="int" Nullable="false" />
+          <Property Name="fkIdentifiantLog" Type="int" Nullable="false" />
+          <Property Name="dateCreation" Type="date" Nullable="false" />
+          <Property Name="nom" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="titre" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="numeroEtape" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="messageErreur" Type="varchar" MaxLength="50" />
+          <Property Name="severite" Type="varchar" MaxLength="20" />
+          <Property Name="datePriseEnCharge" Type="date" />
+          <Property Name="dateTraitement" Type="date" />
+          <Property Name="statut" Type="varchar" MaxLength="50" />
+          <Property Name="detailAnomalie" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_jointureAnoCorbeille_anomalie">
+          <End Role="anomalie" Type="Self.anomalie" Multiplicity="1" />
+          <End Role="anoCorbeille" Type="Self.anoCorbeille" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="anomalie">
+              <PropertyRef Name="identifiant" />
+            </Principal>
+            <Dependent Role="anoCorbeille">
+              <PropertyRef Name="fkIdentifiantAno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_jointureAnoCorbeille_corbeille">
+          <End Role="corbeille" Type="Self.corbeille" Multiplicity="1" />
+          <End Role="anoCorbeille" Type="Self.anoCorbeille" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="corbeille">
+              <PropertyRef Name="identifiant" />
+            </Principal>
+            <Dependent Role="anoCorbeille">
+              <PropertyRef Name="fkIdentifiantCorbeille" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Utilisateur_corbeille">
+          <End Role="corbeille" Type="Self.corbeille" Multiplicity="1" />
+          <End Role="utilisateur" Type="Self.utilisateur" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="corbeille">
+              <PropertyRef Name="identifiant" />
+            </Principal>
+            <Dependent Role="utilisateur">
+              <PropertyRef Name="identifiant" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="appliWebLogsModelStoreContainer">
+          <EntitySet Name="anoCorbeille" EntityType="Self.anoCorbeille" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="anomalie" EntityType="Self.anomalie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="batch" EntityType="Self.batch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="corbeille" EntityType="Self.corbeille" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="domaine" EntityType="Self.domaine" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="log" EntityType="Self.log" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="messageErreur" EntityType="Self.messageErreur" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pole" EntityType="Self.pole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="serveur" EntityType="Self.serveur" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="severite" EntityType="Self.severite" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="statut" EntityType="Self.statut" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="type" EntityType="Self.type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="utilisateur" EntityType="Self.utilisateur" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="corbeillePersonnelle" EntityType="Self.corbeillePersonnelle" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [corbeillePersonnelle].[identifiant] AS [identifiant], 
+    [corbeillePersonnelle].[fkIdentifiantLog] AS [fkIdentifiantLog], 
+    [corbeillePersonnelle].[dateCreation] AS [dateCreation], 
+    [corbeillePersonnelle].[nom] AS [nom], 
+    [corbeillePersonnelle].[titre] AS [titre], 
+    [corbeillePersonnelle].[numeroEtape] AS [numeroEtape], 
+    [corbeillePersonnelle].[messageErreur] AS [messageErreur], 
+    [corbeillePersonnelle].[severite] AS [severite], 
+    [corbeillePersonnelle].[datePriseEnCharge] AS [datePriseEnCharge], 
+    [corbeillePersonnelle].[dateTraitement] AS [dateTraitement], 
+    [corbeillePersonnelle].[statut] AS [statut], 
+    [corbeillePersonnelle].[detailAnomalie] AS [detailAnomalie]
+    FROM [dbo].[corbeillePersonnelle] AS [corbeillePersonnelle]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_jointureAnoCorbeille_anomalie" Association="Self.FK_jointureAnoCorbeille_anomalie">
+            <End Role="anomalie" EntitySet="anomalie" />
+            <End Role="anoCorbeille" EntitySet="anoCorbeille" />
+          </AssociationSet>
+          <AssociationSet Name="FK_jointureAnoCorbeille_corbeille" Association="Self.FK_jointureAnoCorbeille_corbeille">
+            <End Role="corbeille" EntitySet="corbeille" />
+            <End Role="anoCorbeille" EntitySet="anoCorbeille" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Utilisateur_corbeille" Association="Self.FK_Utilisateur_corbeille">
+            <End Role="corbeille" EntitySet="corbeille" />
+            <End Role="utilisateur" EntitySet="utilisateur" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="appliWebLogsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="anomalie">
+          <Key>
+            <PropertyRef Name="identifiant" />
+          </Key>
+          <Property Name="identifiant" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fkIdentifiantLog" Type="Int32" Nullable="false" />
+          <Property Name="dateCreation" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="messageErreur" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="severite" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="datePriseEnCharge" Type="DateTime" Precision="0" />
+          <Property Name="dateTraitement" Type="DateTime" Precision="0" />
+          <Property Name="statut" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="phraseExclue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="log" Relationship="Self.FK_anomalie_log" FromRole="anomalie" ToRole="log" />
+          <NavigationProperty Name="corbeille" Relationship="Self.anoCorbeille" FromRole="anomalie" ToRole="corbeille" />
+          <Property Name="detailAnomalie" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="batch">
+          <Key>
+            <PropertyRef Name="libelle" />
+          </Key>
+          <Property Name="libelle" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="corbeille">
+          <Key>
+            <PropertyRef Name="identifiant" />
+          </Key>
+          <Property Name="identifiant" Type="Int32" Nullable="false" />
+          <Property Name="taille" Type="Int32" />
+          <NavigationProperty Name="utilisateur" Relationship="Self.FK_Utilisateur_corbeille" FromRole="corbeille" ToRole="utilisateur" />
+          <NavigationProperty Name="anomalie" Relationship="Self.anoCorbeille" FromRole="corbeille" ToRole="anomalie" />
+        </EntityType>
+        <EntityType Name="domaine">
+          <Key>
+            <PropertyRef Name="identifiant" />
+          </Key>
+          <Property Name="identifiant" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="libelle" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="log">
+          <Key>
+            <PropertyRef Name="identifiant" />
+          </Key>
+          <Property Name="identifiant" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="domaine" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="titre" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="numeroEtape" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="pole" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="horodatage" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dateCreation" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="nomServeur" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="adresseServeur" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="anomalie" Relationship="Self.FK_anomalie_log" FromRole="log" ToRole="anomalie" />
+        </EntityType>
+        <EntityType Name="messageErreur">
+          <Key>
+            <PropertyRef Name="messageErreurAno" />
+          </Key>
+          <Property Name="messageErreurAno" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="pole">
+          <Key>
+            <PropertyRef Name="identifiant" />
+          </Key>
+          <Property Name="identifiant" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="libelle" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="serveur">
+          <Key>
+            <PropertyRef Name="libelle" />
+          </Key>
+          <Property Name="libelle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="chemin" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="severite">
+          <Key>
+            <PropertyRef Name="libelle" />
+          </Key>
+          <Property Name="libelle" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="statut">
+          <Key>
+            <PropertyRef Name="libelle" />
+          </Key>
+          <Property Name="libelle" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="type">
+          <Key>
+            <PropertyRef Name="libelle" />
+          </Key>
+          <Property Name="libelle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="utilisateur">
+          <Key>
+            <PropertyRef Name="identifiant" />
+          </Key>
+          <Property Name="identifiant" Type="Int32" Nullable="false" />
+          <Property Name="role" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nom" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="prenom" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="debutValidite" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="domaines" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="etat" Type="Int32" Nullable="false" />
+          <Property Name="motDePasse" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="finValidite" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="corbeille" Relationship="Self.FK_Utilisateur_corbeille" FromRole="utilisateur" ToRole="corbeille" />
+        </EntityType>
+        <Association Name="FK_anomalie_log">
+          <End Role="log" Type="Self.log" Multiplicity="1" />
+          <End Role="anomalie" Type="Self.anomalie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="log">
+              <PropertyRef Name="identifiant" />
+            </Principal>
+            <Dependent Role="anomalie">
+              <PropertyRef Name="fkIdentifiantLog" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Utilisateur_corbeille">
+          <End Role="corbeille" Type="Self.corbeille" Multiplicity="1" />
+          <End Role="utilisateur" Type="Self.utilisateur" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="corbeille">
+              <PropertyRef Name="identifiant" />
+            </Principal>
+            <Dependent Role="utilisateur">
+              <PropertyRef Name="identifiant" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="anoCorbeille">
+          <End Role="anomalie" Type="Self.anomalie" Multiplicity="*" />
+          <End Role="corbeille" Type="Self.corbeille" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="appliWebLogsEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="anomalie" EntityType="Self.anomalie" />
+          <EntitySet Name="batch" EntityType="Self.batch" />
+          <EntitySet Name="corbeille" EntityType="Self.corbeille" />
+          <EntitySet Name="domaine" EntityType="Self.domaine" />
+          <EntitySet Name="log" EntityType="Self.log" />
+          <EntitySet Name="messageErreur" EntityType="Self.messageErreur" />
+          <EntitySet Name="pole" EntityType="Self.pole" />
+          <EntitySet Name="serveur" EntityType="Self.serveur" />
+          <EntitySet Name="severite" EntityType="Self.severite" />
+          <EntitySet Name="statut" EntityType="Self.statut" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="type" EntityType="Self.type" />
+          <EntitySet Name="utilisateur" EntityType="Self.utilisateur" />
+          <AssociationSet Name="FK_anomalie_log" Association="Self.FK_anomalie_log">
+            <End Role="log" EntitySet="log" />
+            <End Role="anomalie" EntitySet="anomalie" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Utilisateur_corbeille" Association="Self.FK_Utilisateur_corbeille">
+            <End Role="corbeille" EntitySet="corbeille" />
+            <End Role="utilisateur" EntitySet="utilisateur" />
+          </AssociationSet>
+          <AssociationSet Name="anoCorbeille" Association="Self.anoCorbeille">
+            <End Role="anomalie" EntitySet="anomalie" />
+            <End Role="corbeille" EntitySet="corbeille" />
+          </AssociationSet>
+          <EntitySet Name="corbeillePersonnelle" EntityType="appliWebLogsModel.corbeillePersonnelle" />
+        </EntityContainer>
+        <EntityType Name="corbeillePersonnelle">
+          <Key>
+            <PropertyRef Name="identifiant" />
+            <PropertyRef Name="fkIdentifiantLog" />
+            <PropertyRef Name="dateCreation" />
+            <PropertyRef Name="nom" />
+            <PropertyRef Name="titre" />
+            <PropertyRef Name="numeroEtape" />
+          </Key>
+          <Property Name="identifiant" Type="Int32" Nullable="false" />
+          <Property Name="fkIdentifiantLog" Type="Int32" Nullable="false" />
+          <Property Name="dateCreation" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="nom" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="titre" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="numeroEtape" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="messageErreur" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="severite" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="datePriseEnCharge" Type="DateTime" Precision="0" />
+          <Property Name="dateTraitement" Type="DateTime" Precision="0" />
+          <Property Name="statut" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="detailAnomalie" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="appliWebLogsModelStoreContainer" CdmEntityContainer="appliWebLogsEntities1">
+          <EntitySetMapping Name="anomalie">
+            <EntityTypeMapping TypeName="appliWebLogsModel.anomalie">
+              <MappingFragment StoreEntitySet="anomalie">
+                <ScalarProperty Name="detailAnomalie" ColumnName="detailAnomalie" />
+                <ScalarProperty Name="identifiant" ColumnName="identifiant" />
+                <ScalarProperty Name="fkIdentifiantLog" ColumnName="fkIdentifiantLog" />
+                <ScalarProperty Name="dateCreation" ColumnName="dateCreation" />
+                <ScalarProperty Name="messageErreur" ColumnName="messageErreur" />
+                <ScalarProperty Name="severite" ColumnName="severite" />
+                <ScalarProperty Name="datePriseEnCharge" ColumnName="datePriseEnCharge" />
+                <ScalarProperty Name="dateTraitement" ColumnName="dateTraitement" />
+                <ScalarProperty Name="statut" ColumnName="statut" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="phraseExclue" ColumnName="phraseExclue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="batch">
+            <EntityTypeMapping TypeName="appliWebLogsModel.batch">
+              <MappingFragment StoreEntitySet="batch">
+                <ScalarProperty Name="libelle" ColumnName="libelle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="corbeille">
+            <EntityTypeMapping TypeName="appliWebLogsModel.corbeille">
+              <MappingFragment StoreEntitySet="corbeille">
+                <ScalarProperty Name="identifiant" ColumnName="identifiant" />
+                <ScalarProperty Name="taille" ColumnName="taille" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="domaine">
+            <EntityTypeMapping TypeName="appliWebLogsModel.domaine">
+              <MappingFragment StoreEntitySet="domaine">
+                <ScalarProperty Name="identifiant" ColumnName="identifiant" />
+                <ScalarProperty Name="libelle" ColumnName="libelle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="log">
+            <EntityTypeMapping TypeName="appliWebLogsModel.log">
+              <MappingFragment StoreEntitySet="log">
+                <ScalarProperty Name="identifiant" ColumnName="identifiant" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+                <ScalarProperty Name="domaine" ColumnName="domaine" />
+                <ScalarProperty Name="titre" ColumnName="titre" />
+                <ScalarProperty Name="numeroEtape" ColumnName="numeroEtape" />
+                <ScalarProperty Name="pole" ColumnName="pole" />
+                <ScalarProperty Name="horodatage" ColumnName="horodatage" />
+                <ScalarProperty Name="dateCreation" ColumnName="dateCreation" />
+                <ScalarProperty Name="nomServeur" ColumnName="nomServeur" />
+                <ScalarProperty Name="adresseServeur" ColumnName="adresseServeur" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="messageErreur">
+            <EntityTypeMapping TypeName="appliWebLogsModel.messageErreur">
+              <MappingFragment StoreEntitySet="messageErreur">
+                <ScalarProperty Name="messageErreurAno" ColumnName="messageErreurAno" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pole">
+            <EntityTypeMapping TypeName="appliWebLogsModel.pole">
+              <MappingFragment StoreEntitySet="pole">
+                <ScalarProperty Name="identifiant" ColumnName="identifiant" />
+                <ScalarProperty Name="libelle" ColumnName="libelle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="serveur">
+            <EntityTypeMapping TypeName="appliWebLogsModel.serveur">
+              <MappingFragment StoreEntitySet="serveur">
+                <ScalarProperty Name="libelle" ColumnName="libelle" />
+                <ScalarProperty Name="chemin" ColumnName="chemin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="severite">
+            <EntityTypeMapping TypeName="appliWebLogsModel.severite">
+              <MappingFragment StoreEntitySet="severite">
+                <ScalarProperty Name="libelle" ColumnName="libelle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="statut">
+            <EntityTypeMapping TypeName="appliWebLogsModel.statut">
+              <MappingFragment StoreEntitySet="statut">
+                <ScalarProperty Name="libelle" ColumnName="libelle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="appliWebLogsModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="type">
+            <EntityTypeMapping TypeName="appliWebLogsModel.type">
+              <MappingFragment StoreEntitySet="type">
+                <ScalarProperty Name="libelle" ColumnName="libelle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="utilisateur">
+            <EntityTypeMapping TypeName="appliWebLogsModel.utilisateur">
+              <MappingFragment StoreEntitySet="utilisateur">
+                <ScalarProperty Name="identifiant" ColumnName="identifiant" />
+                <ScalarProperty Name="role" ColumnName="role" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+                <ScalarProperty Name="prenom" ColumnName="prenom" />
+                <ScalarProperty Name="debutValidite" ColumnName="debutValidite" />
+                <ScalarProperty Name="domaines" ColumnName="domaines" />
+                <ScalarProperty Name="etat" ColumnName="etat" />
+                <ScalarProperty Name="motDePasse" ColumnName="motDePasse" />
+                <ScalarProperty Name="finValidite" ColumnName="finValidite" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="anoCorbeille" TypeName="appliWebLogsModel.anoCorbeille" StoreEntitySet="anoCorbeille">
+            <EndProperty Name="anomalie">
+              <ScalarProperty Name="identifiant" ColumnName="fkIdentifiantAno" />
+            </EndProperty>
+            <EndProperty Name="corbeille">
+              <ScalarProperty Name="identifiant" ColumnName="fkIdentifiantCorbeille" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="corbeillePersonnelle">
+            <EntityTypeMapping TypeName="appliWebLogsModel.corbeillePersonnelle">
+              <MappingFragment StoreEntitySet="corbeillePersonnelle">
+                <ScalarProperty Name="detailAnomalie" ColumnName="detailAnomalie" />
+                <ScalarProperty Name="statut" ColumnName="statut" />
+                <ScalarProperty Name="dateTraitement" ColumnName="dateTraitement" />
+                <ScalarProperty Name="datePriseEnCharge" ColumnName="datePriseEnCharge" />
+                <ScalarProperty Name="severite" ColumnName="severite" />
+                <ScalarProperty Name="messageErreur" ColumnName="messageErreur" />
+                <ScalarProperty Name="numeroEtape" ColumnName="numeroEtape" />
+                <ScalarProperty Name="titre" ColumnName="titre" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+                <ScalarProperty Name="dateCreation" ColumnName="dateCreation" />
+                <ScalarProperty Name="fkIdentifiantLog" ColumnName="fkIdentifiantLog" />
+                <ScalarProperty Name="identifiant" ColumnName="identifiant" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -52,6 +52,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -168,30 +170,150 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\corbeillePersonnellesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\utilisateursController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\anomalie.cs">
+      <DependentUpon>AppliWebLogsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AppliWebLogsModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppliWebLogsModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AppliWebLogsModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppliWebLogsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AppliWebLogsModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppliWebLogsModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\batch.cs">
+      <DependentUpon>AppliWebLogsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\corbeille.cs">
+      <DependentUpon>AppliWebLogsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\corbeillePersonnelle.cs">
+      <DependentUpon>AppliWebLogsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\corbeillePersonnellesMetaData.cs" />
+    <Compile Include="Models\domaine.cs">
+      <DependentUpon>AppliWebLogsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EntityExtension.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\log.cs">
+      <DependentUpon>AppliWebLogsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\messageErreur.cs">
+      <DependentUpon>AppliWebLogsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\pole.cs">
+      <DependentUpon>AppliWebLogsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\serveur.cs">
+      <DependentUpon>AppliWebLogsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\severite.cs">
+      <DependentUpon>AppliWebLogsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\statut.cs">
+      <DependentUpon>AppliWebLogsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>AppliWebLogsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\type.cs">
+      <DependentUpon>AppliWebLogsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\utilisateur.cs">
+      <DependentUpon>AppliWebLogsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\utilisateurMetaData.cs" />
+    <Compile Include="Models\UtilisateurTemporaire.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\AppliWeb1.css" />
+    <Content Include="Content\AppliWeb2.css" />
+    <Content Include="Content\blitzer\images\ui-bg_diagonals-thick_75_f3d8d8_40x40.png" />
+    <Content Include="Content\blitzer\images\ui-bg_dots-small_65_a6a6a6_2x2.png" />
+    <Content Include="Content\blitzer\images\ui-bg_glass_55_fbf8ee_1x400.png" />
+    <Content Include="Content\blitzer\images\ui-bg_highlight-hard_100_eeeeee_1x100.png" />
+    <Content Include="Content\blitzer\images\ui-bg_highlight-hard_100_f6f6f6_1x100.png" />
+    <Content Include="Content\blitzer\images\ui-bg_highlight-soft_15_cc0000_1x100.png" />
+    <Content Include="Content\blitzer\images\ui-icons_004276_256x240.png" />
+    <Content Include="Content\blitzer\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Content\blitzer\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\blitzer\jquery-ui-1.9.2.custom.min.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\dataTables.jqueryui.min.css" />
+    <Content Include="Content\stylesheet.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\appliweb.png" />
+    <Content Include="images\corbeille_personnelle.png" />
+    <Content Include="images\favicon.ico" />
+    <Content Include="images\humanis.png" />
+    <Content Include="images\logout.png" />
+    <Content Include="images\moins_bouton.png" />
+    <Content Include="images\parametrage.png" />
+    <Content Include="images\plus_bouton.png" />
+    <Content Include="images\requete.png" />
+    <Content Include="images\requete_simplifiee.png" />
+    <Content Include="images\sort_asc.png" />
+    <Content Include="images\sort_asc_disabled.png" />
+    <Content Include="images\sort_both.png" />
+    <Content Include="images\sort_desc.png" />
+    <Content Include="images\sort_desc_disabled.png" />
+    <Content Include="images\vue_generale.png" />
+    <Content Include="Models\AppliWebLogsModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AppliWebLogsModel.edmx</DependentUpon>
+      <LastGenOutput>AppliWebLogsModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\AppliWebLogsModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AppliWebLogsModel.edmx</DependentUpon>
+      <LastGenOutput>AppliWebLogsModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.menu.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\AppliWebLogsModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AppliWebLogsModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\AppliWebLogsModel.edmx.diagram">
+      <DependentUpon>AppliWebLogsModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="images\Sorting icons.psd" />
+    <Content Include="Content\fonts\delius-regular-webfont.woff" />
+    <Content Include="Content\fonts\delius-regular-webfont.woff2" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\dataTables.jqueryui.min.js" />
+    <Content Include="Scripts\i18n\dataTable-fr.js" />
+    <Content Include="Scripts\i18n\jquery.ui.datepicker-fr.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.9.2.custom.min.js" />
+    <Content Include="Scripts\jquery.dataTables.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -234,6 +356,15 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\utilisateurs\Edit.cshtml" />
+    <Content Include="Views\utilisateurs\Index.cshtml" />
+    <Content Include="Views\Shared\_ConnexionLayout.cshtml" />
+    <Content Include="Views\utilisateurs\ReinitMdp.cshtml" />
+    <Content Include="Views\corbeillePersonnelles\Create.cshtml" />
+    <Content Include="Views\corbeillePersonnelles\Delete.cshtml" />
+    <Content Include="Views\corbeillePersonnelles\Details.cshtml" />
+    <Content Include="Views\corbeillePersonnelles\Edit.cshtml" />
+    <Content Include="Views\corbeillePersonnelles\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -245,6 +376,9 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

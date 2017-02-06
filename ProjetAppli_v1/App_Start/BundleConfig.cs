@@ -9,7 +9,12 @@ namespace ProjetAppli_v1
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                        "~/Scripts/jquery-{version}.js",
+                        "~/Scripts/jquery.dataTables.min.js",
+                        "~/Scripts/jquery-ui-1.9.2.custom.min.js",
+                        "~/Scripts/dataTables.jqueryui.min.js",
+                        "~/Scripts/i18n/jquery.ui.datepicker-fr.js"));
+
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -25,6 +30,10 @@ namespace ProjetAppli_v1
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/blitzer/jquery-ui-1.9.2.custom.min.css",
+                      "~/Content/AppliWeb1.css",
+                      "~/Content/AppliWeb2.css",
+                      "~/Content/dataTables.jqueryui.min.css",
                       "~/Content/site.css"));
         }
     }

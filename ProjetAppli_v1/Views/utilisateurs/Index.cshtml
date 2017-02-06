@@ -1,0 +1,60 @@
+﻿@model  ProjetAppli_v1.Models.utilisateur
+
+@{
+    ViewBag.Title = "Page d'accueil";
+}
+
+<div id="page" class="container">
+    <!--balise bloc fixe / la classe de style "container" est définie dans bootstrap-->
+    <section id="main" class="container">
+        <!--<section> = block qui se comporte comme div-->
+        @using (Html.BeginForm("Index", "utilisateurs", FormMethod.Post, new { @class = "form-horizontal" }))
+        {
+            @Html.AntiForgeryToken()
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.email, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-6">
+                        @Html.TextBoxFor(model => model.email, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.motDePasse, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-6">
+                        @Html.PasswordFor(model => model.motDePasse, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.motDePasse, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-6" style="color:red; font-weight:bold;" id="messageErreur">
+                        @ViewBag.Message
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-md-6">
+                        <input value="Valider" type="submit" class="btn btn-success">
+                    </div>
+                </div>
+
+                <div class="form-group" method='post' action="#">
+                    <div class="col-sm-offset-2 col-md-6">
+                        <a id="lienMdpOublie">Mot de passe oublié</a>
+                    </div>
+                    <script type="text/javascript">
+                        $('#lienMdpOublie').click(function () {
+                            var email = $('#email').val();
+                            var regExpr = new RegExp('^[0-9a-z._-]+@@{1}[0-9a-z.-]{2,}[.]{1}[a-z]{2,5}$', 'i');
+                            if (regExpr.test(email)) {
+                                document.location.href = "/utilisateurs/ReinitMdp?email="+email;
+                            } else {
+                                $('#messageErreur').text("Votre email doit être saisi et doit correspondre à une adresse valide.")
+                            }
+                        })
+                    </script>
+                </div>
+        }
+
+    </section>
+</div>

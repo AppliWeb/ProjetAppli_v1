@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    @RenderSection("scripts", required: false)
+
+</head>
+<body>
+    <div id="page" class="container">
+        <!--balise bloc fixe/la classe de style "container qui est definie dans bootstrap-->
+        <header>
+
+            <div id="logo">
+                <p>
+                    <!--<a> correspond à l'emplacement du logo et <href> est le lien d'acces-->
+                    <a href="http://www.humanis.com" target="_blank" title="Site internet Humanis"><img src="~/images/humanis.png" alt="lien site Humanis"></a>
+                    <!--target="_blank" ouvre le lien sur un nouvel onglet ou nouvelle fenetre selon le navigateur -->
+                </p>
+
+            </div>
+            <h1 id="titre">
+                Appliweb
+                <!--<h1> est une balise comportant le titre en format texte ou h1 est la taille d'ecriture la + grande et h6 la + petite-->
+            </h1>
+        </header>
+    </div>
+
+    <div class="container body-content">
+        @RenderBody() <!-- -->
+        <img src="/images\appliweb.png" />
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,146 @@
+﻿@font-face {
+    font-family: 'deliusregular';
+    src: url('fonts/delius-regular-webfont.woff2') format('woff2'), url('fonts/delius-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+    font-size: 10pt;
+}
+
+#page {
+    width: 1280px;
+    margin: auto;
+}
+
+header {
+    margin-top: 5px;
+    margin-bottom: 80px;
+}
+
+#nomDePage, #nomUtilisateur, #derniereConnexion {
+    font-family: 'deliusregular',serif;
+    font-weight: bold;
+    /*float:left; permet de rendre l'élément flottant pour afficher du texte à côté */
+    display: inline-block;
+}
+
+#nomDePage {
+    min-width: 40%;
+    font-size: 2em;
+    color: red;
+}
+
+#nomUtilisateur {
+    min-width: 30%;
+    text-align: center; /*centré horizontalement dans son parent (body)*/
+    font-size: 1.2em;
+}
+
+#derniereConnexion {
+    min-width: 25%;
+    font-size: 0.8em;
+}
+
+#imglogout {
+    min-width: 25%;
+    text-align: right; /*centré horizontalement dans son parent (body)*/
+}
+
+#main, #action /* definiton de style commune à "main" et à "action"*/ {
+    font-family: 'deliusregular',serif;
+    min-height: 600px;
+    max-height: 760px; /*barre de défilement si le contenu dépasse max-height*/
+}
+
+#main {
+    width: 91%;
+    height:400px;
+    float: left;
+    /*overflow-x: scroll;*/
+}
+       
+
+#action {
+    width: 9%;
+    float: left;
+}
+
+.dessous{
+    clear:both;/*empeche le flottant de depasser de leur conteneur*/
+}
+
+#imgVueGenerale, #imgRequete, #imgParametrage,#imgcorbeillepersonnelle{
+    margin:10px;
+}
+
+p{
+    width: 250px;
+    text-align:center;
+}
+
+#hblocLogAno { /*contient le blocLog et le blocAno*/
+    height: 255px;
+    line-height: 18px;
+}
+
+#hblocLog1,#hblocLog2,#hblocLog3,#hblocLog4 {
+    height: auto;
+    width: auto;
+    font-weight: normal !important;
+    font-size-adjust:initial;
+}
+
+#hblocAno1,#hblocAno2,#hblocAno3,#hblocAno4,#hblocAno5 {    
+ font-weight: normal !important;
+ font-size-adjust:initial;
+}
+
+#demitableau {
+    max-width: 100%;
+    height: 490px;
+    margin-top:200px;
+    line-height: 15px;
+   /* border: 2px solid black;*/
+    border-radius: 6px;
+    text-align: left !important;
+}
+
+.blocTab {
+    text-align: left !important;
+}
+
+/*#imgrequetesimplifiee {
+    margin-top: 50px;
+    margin-left: 50px;
+}*/
+
+section h5 { /*label inclus dans h5*/
+    margin-left: 00px;
+    text-align: right;
+}
+
+/*.boutonValider {
+    min-width: 50px;
+    min-height: 50px;
+    margin-top: 380px;
+    margin-left: 50px;
+}*/
+
+.btn{
+    margin-top:100px;
+    width:100px;
+    height:50px;
+    border-radius:8px;
+   /* background:#d34836;*/
+    /*font:  13px Arial bold;*/
+    color: none;
+    border: 1px solid black;
+}
+
+.date, .statut {
+    min-width:100px;
+}

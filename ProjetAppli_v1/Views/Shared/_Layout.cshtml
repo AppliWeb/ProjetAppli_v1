@@ -4,42 +4,77 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Mon application ASP.NET</title>
+    <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
-</head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Nom d'application", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Accueil", "Index", "Home")</li>
-                    <li>@Html.ActionLink("À propos de", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
-        </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+
     @RenderSection("scripts", required: false)
+
+</head>
+<body>
+    <div id="page" class="container">
+        <!--balise bloc fixe/la classe de style "container qui est definie dans bootstrap-->
+        <header>
+            <span id="nomDePage">@ViewBag.NomPage</span>
+            <span id="nomUtilisateur">
+            @{ if (Session["utilisateur"] == null)
+                {
+                    Response.Redirect("/utilisateurs/Index");
+                }
+                else
+                {
+                    @Session["utilisateur"].ToString()
+                }
+            }
+            </span>
+            <span id="imglogout">
+                <a href="pageAccueil.html" id="imglogout" alt="Deconnexion"><img src="images/logout.png" title="Déconnexion"></a>
+            </span>
+
+        </header>
+        <section id="main">
+            <div class="container body-content">
+                @RenderBody() <!-- -->
+            </div>
+        </section>
+        <section id="action">
+            <!--partie droite de l'écran où se situe les boutons de navigation-->
+            <!--<section> = block qui se comporte comme div-->
+            <div class="dessous">
+                <p>
+                    <a href="/controleur/methode" id="imgrequete" alt="Requête">
+                        <img src="images/requete.png" title="Requête">
+                        <br />Requête<br />
+                    </a>
+                </p>
+                <p>
+                    <a href="/controleur/methode" id="imgParametrage" alt="Paramétrage Anomalies">
+                        <img src="images/parametrage.png" title="Paramétrage Anomalies">
+                        <br />Paramétrage Anomalies<br />
+                    </a>
+                </p>
+                <p>
+                    <a href="/controleur/methode" id="imgParametrage" alt="Paramétrage Habilitations">
+                        <img src="images/parametrage.png" title="Paramétrage Habilitations">
+                        <br />Paramétrage Habilitations<br />
+                    </a>
+                </p>
+                <p>
+                    <a href="/controleur/methode" id="imgParametrage" alt="Paramétrage Logs">
+                        <img src="images/parametrage.png" title="Paramétrage Logs">
+                        <br />Paramétrage Logs<br />
+                    </a>
+                </p>
+                <p><input value="Valider" type="submit" id="btnValider" class="btn" form="idFormulaire"></p>
+
+            </div>
+
+        </section>
+    </div>
+
 </body>
+
 </html>

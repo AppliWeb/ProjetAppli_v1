@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="dd1d2ebc59594dc5ac657c9e67c36804" Name="Diagram1">
+        <EntityTypeShape EntityType="appliWebLogsModel.anomalie" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="appliWebLogsModel.batch" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="appliWebLogsModel.corbeille" Width="1.5" PointX="5.25" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="appliWebLogsModel.domaine" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="appliWebLogsModel.log" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="appliWebLogsModel.messageErreur" Width="1.5" PointX="4.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="appliWebLogsModel.pole" Width="1.5" PointX="6.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="appliWebLogsModel.serveur" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="appliWebLogsModel.severite" Width="1.5" PointX="2.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="appliWebLogsModel.statut" Width="1.5" PointX="4.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="appliWebLogsModel.sysdiagrams" Width="1.5" PointX="8.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="appliWebLogsModel.type" Width="1.5" PointX="6.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="appliWebLogsModel.utilisateur" Width="1.5" PointX="7.5" PointY="1.125" IsExpanded="true" />
+        <AssociationConnector Association="appliWebLogsModel.FK_anomalie_log" ManuallyRouted="false" />
+        <AssociationConnector Association="appliWebLogsModel.FK_Utilisateur_corbeille" ManuallyRouted="false" />
+        <AssociationConnector Association="appliWebLogsModel.anoCorbeille" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="appliWebLogsModel.corbeillePersonnelle" Width="1.5" PointX="9.625" PointY="1" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

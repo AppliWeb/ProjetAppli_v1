@@ -1,0 +1,144 @@
+﻿@model IEnumerable<ProjetAppli_v1.Models.corbeillePersonnelle>
+
+@{
+    ViewBag.Title = "Corbeille personnelle";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <script>
+        $(document).ready(function () {
+            $('table').dataTable({
+                bJQueryUI: true,
+                sDom: "lfrtip",
+                bFilter: false,
+                bPaginate: false,
+                bScrollCollapse: true,
+                sPaginationType: "full_numbers",
+                aaSorting: [],
+                language:
+                    {
+                        url: 'js/i18n/dataTable-fr.js'
+                    }
+            });
+
+            $('table thead tr th').last().hide();
+            $('table tbody tr').each(function (index) {
+                var td = $(this).find('td').last();
+                var text = td.text();
+                var array = text.split('\n');
+                for (var i = 0; i < array.length; i++) {
+                    array[i] = array[i].trim();
+                }
+                text = array.join('\n');
+                td.html('<pre>' + text + '</pre>');
+                td.addClass('dernier');
+                td.hide();
+            });
+
+            $('.date').datepicker();
+        });
+
+        function afficher(element) {
+            if ($(element).text() === "Afficher le détail") {
+                $('table thead tr th').last().show();
+                $('table tbody tr').each(function (index) {
+                    var td = $(this).find('td').last();
+                    td.show();
+                });
+                $(element).text("Masquer le détail des anomalies");
+            } else {
+                $('table thead tr th').last().hide();
+                $('table tbody tr').each(function (index) {
+                    var td = $(this).find('td').last();
+                    td.hide();
+                });
+                $(element).text("Afficher le détail des anomalies");
+            }
+        }
+    </script>
+
+<table class="table table-striped table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.identifiant)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dateCreation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.titre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.numeroEtape)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.messageErreur)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.severite)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.datePriseEnCharge)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dateTraitement)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.statut)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.detailAnomalie)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.identifiant)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dateCreation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.titre)
+                </td>
+                <td> 
+                    @Html.DisplayFor(modelItem => item.numeroEtape)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.messageErreur)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.severite) 
+                </td>
+                <td> <!--  a editer -->
+                    @Html.EditorFor(modelItem => item.datePriseEnCharge, new { htmlAttributes = new { @class = "form-control date" } })
+                </td>
+                <td> <!--  a editer -->
+                    @Html.EditorFor(modelItem => item.dateTraitement, new { htmlAttributes = new { @class = "form-control date" } })
+                </td>
+                <td> <!--  a editer -->
+                    @Html.DropDownList("statut", null, htmlAttributes: new { @class = "form-control statut" })
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.detailAnomalie)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+}
