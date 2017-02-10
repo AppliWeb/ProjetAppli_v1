@@ -1,0 +1,43 @@
+﻿@model ProjetAppli_v1.Models.parametrageLogs
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>parametrageLogs</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.libelleServeur)
+
+        @Html.HiddenFor(model => model.cheminServeur)
+
+        @Html.HiddenFor(model => model.libelleBatch)
+
+        @Html.HiddenFor(model => model.identifiantLog)
+
+        @Html.HiddenFor(model => model.identifiantDomaine)
+
+        @Html.HiddenFor(model => model.libelleDomaine)
+
+        @Html.HiddenFor(model => model.identifiantPole)
+
+        @Html.HiddenFor(model => model.libellePole)
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

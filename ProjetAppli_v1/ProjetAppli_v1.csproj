@@ -173,6 +173,9 @@
     <Compile Include="Controllers\corbeillePersonnellesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\parametrageAnomaliesController.cs" />
+    <Compile Include="Controllers\parametrageHabilitationsController.cs" />
+    <Compile Include="Controllers\parametrageLogsController.cs" />
     <Compile Include="Controllers\utilisateursController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -218,6 +221,15 @@
     <Compile Include="Models\messageErreur.cs">
       <DependentUpon>AppliWebLogsModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\parametrageAnomalie.cs">
+      <DependentUpon>AppliWebLogsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\parametrageHabilitations.cs">
+      <DependentUpon>AppliWebLogsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\parametrageLogs.cs">
+      <DependentUpon>AppliWebLogsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\pole.cs">
       <DependentUpon>AppliWebLogsModel.tt</DependentUpon>
     </Compile>
@@ -225,6 +237,12 @@
       <DependentUpon>AppliWebLogsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\severite.cs">
+      <DependentUpon>AppliWebLogsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>AppliWebLogsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
       <DependentUpon>AppliWebLogsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\statut.cs">
@@ -256,11 +274,11 @@
     <Content Include="Content\blitzer\images\ui-icons_004276_256x240.png" />
     <Content Include="Content\blitzer\images\ui-icons_cc0000_256x240.png" />
     <Content Include="Content\blitzer\images\ui-icons_ffffff_256x240.png" />
-    <Content Include="Content\blitzer\jquery-ui-1.9.2.custom.min.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\dataTables.jqueryui.min.css" />
+    <Content Include="Content\blitzer\jquery-ui-1.9.2.custom.min.css" />
     <Content Include="Content\stylesheet.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -312,7 +330,6 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery-ui-1.9.2.custom.min.js" />
     <Content Include="Scripts\jquery.dataTables.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -331,13 +348,9 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
     <Content Include="Views\Account\ForgotPassword.cshtml" />
@@ -354,17 +367,27 @@
     <Content Include="Views\Manage\ManageLogins.cshtml" />
     <Content Include="Views\Manage\SetPassword.cshtml" />
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
-    <Content Include="Views\Shared\Lockout.cshtml" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\utilisateurs\Edit.cshtml" />
     <Content Include="Views\utilisateurs\Index.cshtml" />
     <Content Include="Views\Shared\_ConnexionLayout.cshtml" />
     <Content Include="Views\utilisateurs\ReinitMdp.cshtml" />
     <Content Include="Views\corbeillePersonnelles\Create.cshtml" />
     <Content Include="Views\corbeillePersonnelles\Delete.cshtml" />
-    <Content Include="Views\corbeillePersonnelles\Details.cshtml" />
     <Content Include="Views\corbeillePersonnelles\Edit.cshtml" />
     <Content Include="Views\corbeillePersonnelles\Index.cshtml" />
+    <Content Include="Views\parametrageAnomalies\Create.cshtml" />
+    <Content Include="Views\parametrageAnomalies\Delete.cshtml" />
+    <Content Include="Views\parametrageAnomalies\Edit.cshtml" />
+    <Content Include="Views\parametrageAnomalies\Index.cshtml" />
+    <Content Include="Views\parametrageHabilitations\Create.cshtml" />
+    <Content Include="Views\parametrageHabilitations\Delete.cshtml" />
+    <Content Include="Views\parametrageHabilitations\Edit.cshtml" />
+    <Content Include="Views\parametrageHabilitations\Index.cshtml" />
+    <Content Include="Views\parametrageLogs\Create.cshtml" />
+    <Content Include="Views\parametrageLogs\Delete.cshtml" />
+    <Content Include="Views\parametrageLogs\Details.cshtml" />
+    <Content Include="Views\parametrageLogs\Edit.cshtml" />
+    <Content Include="Views\parametrageLogs\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -374,7 +397,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
-    <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>

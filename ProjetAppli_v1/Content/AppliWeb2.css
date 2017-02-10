@@ -8,12 +8,12 @@
 body {
     margin: 0px;
     padding: 0px;
-    font-size: 10pt;
+    font-size: 12pt;
 }
 
 #page {
     width: 1280px;
-    margin: auto;
+    margin: 0px auto;
 }
 
 header {
@@ -57,57 +57,46 @@ header {
 }
 
 #main {
-    width: 91%;
-    height:400px;
+    width: 90%;
     float: left;
-    /*overflow-x: scroll;*/
+   /* overflow: auto;barre de scroll horizontale et verticale*/
 }
-       
 
 #action {
     width: 9%;
     float: left;
 }
 
-.dessous{
-    clear:both;/*empeche le flottant de depasser de leur conteneur*/
+.dessous {
+    clear: both; /*empeche le flottant de depasser de leur conteneur*/
 }
 
-#imgVueGenerale, #imgRequete, #imgParametrage,#imgcorbeillepersonnelle{
-    margin:10px;
+#imgVueGenerale, #imgRequete, #imgParametrage, #imgcorbeillepersonnelle {
+    margin: 10px;
 }
 
-p{
+p {
     width: 250px;
-    text-align:center;
+    text-align: center;
 }
 
-#hblocLogAno { /*contient le blocLog et le blocAno*/
-    height: 255px;
-    line-height: 18px;
-}
 
-#hblocLog1,#hblocLog2,#hblocLog3,#hblocLog4 {
-    height: auto;
-    width: auto;
+#hblocLog1 {
+    max-width: 300px;
+    min-width: 100px;
+    /*height: auto;*/
     font-weight: normal !important;
-    font-size-adjust:initial;
+    font-size-adjust: initial;
+    line-height: 12px;
 }
 
-#hblocAno1,#hblocAno2,#hblocAno3,#hblocAno4,#hblocAno5 {    
- font-weight: normal !important;
- font-size-adjust:initial;
+#hblocAno1, #hblocAno2, #hblocAno3, #hblocAno4, #hblocAno5 {
+    min-width: 100px;
+    font-weight: normal !important;
+    font-size-adjust: initial;
+    line-height: 12px;
 }
 
-#demitableau {
-    max-width: 100%;
-    height: 490px;
-    margin-top:200px;
-    line-height: 15px;
-   /* border: 2px solid black;*/
-    border-radius: 6px;
-    text-align: left !important;
-}
 
 .blocTab {
     text-align: left !important;
@@ -130,17 +119,100 @@ section h5 { /*label inclus dans h5*/
     margin-left: 50px;
 }*/
 
-.btn{
-    margin-top:100px;
-    width:100px;
-    height:50px;
-    border-radius:8px;
-   /* background:#d34836;*/
+.btn2 {
+    margin-top: 100px !important;
+    width: 100px;
+    height: 50px;
+    border-radius: 8px;
+    /* background:#d34836;*/
     /*font:  13px Arial bold;*/
     color: none;
     border: 1px solid black;
 }
 
-.date, .statut {
-    min-width:100px;
+.btnRequete {
+    margin-top: 100px !important;
+    width: 100px;
+    height: 50px;
+    border-radius: 8px;
+    /* background:#d34836;*/
+    /*font:  13px Arial bold;*/
+    color: none;
+    border: 1px solid black;
 }
+
+.btnParamHabil {
+    margin-top: 100px !important;
+    width: 100px;
+    height: 50px;
+    border-radius: 8px;
+    /* background:#d34836;*/
+    /*font:  13px Arial bold;*/
+    color: none;
+    border: 1px solid black;
+}
+
+#btnAjouter {   
+    width: 250px;
+    height: 50px;
+    border-radius: 8px;
+   color: white;
+    background-color:mediumaquamarine;
+    border: 1px solid black;    
+}
+
+#btnSupprimer {   
+    width: 250px;
+    height: 50px;
+    border-radius: 8px;
+    color: white;
+    background-color:crimson;
+    border: 1px solid black;
+}
+
+#aucunResultat{
+    margin-top:180px;
+    font-size:1.3em;
+    text-align:center;
+}
+
+#btnRetour {
+    margin-top:30px;
+    width: 200px;
+    height: 50px;
+    border-radius: 8px;
+    color: black;
+    background-color:gainsboro;
+    border: 1px solid black;
+    text-align:center;
+}
+
+.btn-ResNulReq {
+    margin-top:20px;
+    min-width:150px;
+    text-shadow: 0 1px 0 #fff;
+    background-image: -webkit-linear-gradient(top,#fff 0,#e0e0e0 100%);
+    background-image: -o-linear-gradient(top,#fff 0,#e0e0e0 100%);
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#fff),to(#e0e0e0));
+    background-image: linear-gradient(to bottom,#fff 0,#e0e0e0 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe0e0e0', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+    background-repeat: repeat-x;
+    border-color: #dbdbdb;
+    border-color: #ccc;
+}
+
+    .btn-ResNulReq:focus, .btn-ResNulReq:hover {
+        background-color: #e0e0e0;
+        background-position: 0 -15px;
+    }
+
+    .btn-ResNulReq.active, .btn-ResNulReq:active {
+        background-color: #e0e0e0;
+        border-color: #dbdbdb;
+    }
+
+    .btn-ResNulReq.disabled, .btn-ResNulReq.disabled.active, .btn-ResNulReq.disabled.focus, .btn-ResNulReq.disabled:active, .btn-ResNulReq.disabled:focus, .btn-ResNulReq.disabled:hover, .btn-ResNulReq[disabled], .btn-ResNulReq[disabled].active, .btn-ResNulReq[disabled].focus, .btn-ResNulReq[disabled]:active, .btn-ResNulReq[disabled]:focus, .btn-ResNulReq[disabled]:hover, fieldset[disabled] .btn-ResNulReq, fieldset[disabled] .btn-ResNulReq.active, fieldset[disabled] .btn-ResNulReq.focus, fieldset[disabled] .btn-ResNulReq:active, fieldset[disabled] .btn-ResNulReq:focus, fieldset[disabled] .btn-ResNulReq:hover {
+        background-color: #e0e0e0;
+        background-image: none;
+    }
